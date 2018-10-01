@@ -70,5 +70,3 @@ double TemperatureProfile::getMaxTemp()
   return maxTemp;
 }
 
-}
-
