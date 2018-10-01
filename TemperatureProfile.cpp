@@ -12,6 +12,12 @@ void TemperatureProfile::setTempAt(uint16_t secs,double temp)
   if (secs > duration) {
     duration = secs;
   }
+  if (temp > maxTemp) {
+    maxTemp = temp;
+  }
+  if (temp < minTemp) {
+    minTemp = temp;
+  }
   temperaturePoints[numTempPoints].offset = secs;
   temperaturePoints[numTempPoints].temperature = temp;
   numTempPoints++;
@@ -41,10 +47,28 @@ double TemperatureProfile::getTempAt(uint16_t secs)
 }
 
 /*
- * returns the duratino of the temperature profile, in seconds
+ * returns the duration of the temperature profile, in seconds
  */
 uint16_t TemperatureProfile::getDuration()
 {
   return duration;
+}
+
+/*
+ * returns the minimum temperature in the profile
+ */
+double TemperatureProfile::getMinTemp()
+{
+  return minTemp;
+}
+
+/*
+ * returns the maximum temperature in the profile
+ */
+double TemperatureProfile::getMaxTemp()
+{
+  return maxTemp;
+}
+
 }
 

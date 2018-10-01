@@ -15,10 +15,14 @@ class TemperatureProfile {
     void setTempAt(uint16_t secs,double temp);
     double getTempAt(uint16_t sec);
     uint16_t getDuration();
+    double getMinTemp();
+    double getMaxTemp();
     
   private:
     uint16_t duration=0;
     uint16_t numTempPoints=0;
+    double minTemp = 10000;
+    double maxTemp = -1;
     temperature_point_t temperaturePoints[MAX_TEMP_POINTS];
 };
 
