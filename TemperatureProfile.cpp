@@ -39,8 +39,10 @@ double TemperatureProfile::getTempAt(uint16_t secs)
     else if (temperaturePoints[i].offset > secs) {
       // this temperature point is the one ahead of us; interpolate between last one and it
       double time_span = temperaturePoints[i].offset - temperaturePoints[i-1].offset;
+      //Serial.print("time_span: "); Serial.println(time_span);
       double temp_span = temperaturePoints[i].temperature - temperaturePoints[i-1].temperature;
-      double interpolated = ((secs - temperaturePoints[i].offset)/time_span) * temp_span + temperaturePoints[i-1].temperature;
+      //Serial.print("temp_span: "); Serial.println(temp_span);
+      double interpolated = ((secs - temperaturePoints[i-1].offset)/time_span) * temp_span + temperaturePoints[i-1].temperature;
       return interpolated;
     }
   }
